@@ -1,7 +1,11 @@
 import React from "react";
 import logo from "../assets/jobly_logo.png";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+
+    const navigate = useNavigate();
+
     return (
         <div className="bg-white min-h-screen flex flex-col">
             {/* Navbar */}
@@ -11,10 +15,10 @@ const LandingPage = () => {
                 </div>
 
                 <div className="flex space-x-3 mt-3 sm:mt-0">
-                    <button className="px-4 py-2 border border-blue-500 text-blue-500 rounded-md hover:bg-blue-50 transition text-sm sm:text-base">
+                    <button className="px-4 py-2 border border-blue-500 text-blue-500 rounded-md hover:bg-blue-50 transition text-sm sm:text-base " onClick={() => navigate("/login")}>
                         Log In
                     </button>
-                    <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition text-sm sm:text-base">
+                    <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition text-sm sm:text-base" onClick={() => navigate("/signup")}>
                         Sign Up
                     </button>
                 </div>
