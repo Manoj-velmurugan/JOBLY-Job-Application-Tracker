@@ -1,7 +1,7 @@
-const { application } = require("express");
 const Application = require("../models/Application");
+const mongoose = require("mongoose");
 
-// new job application
+// Create a new job application
 const addApplication = async (req, res) => {
   try {
     const { userId, company, position, status, dateApplied, notes } = req.body;
@@ -9,7 +9,7 @@ const addApplication = async (req, res) => {
     if (!userId || !company || !position || !status || !dateApplied) {
       return res
         .status(400)
-        .json({ message: "Company, position and UserID are required" });
+        .json({ message: "User ID, company, position, status, and dateApplied are required" });
     }
 
     const validStatuses = ["Applied", "Interview", "Offer", "Rejected"];
@@ -19,27 +19,11 @@ const addApplication = async (req, res) => {
 
     const appDate = new Date(dateApplied);
     const today = new Date();
-
-    const appYear = appDate.getFullYear();
-    const appMonth = appDate.getMonth();
-    const appDay = appDate.getDate();
-
-    const todayYear = today.getFullYear();
-    const todayMonth = today.getMonth();
-    const todayDay = today.getDate();
-
-   
-    if (
-      appYear > todayYear ||
-      (appYear === todayYear && appMonth > todayMonth) ||
-      (appYear === todayYear && appMonth === todayMonth && appDay > todayDay)
-    ) {
-      return res
-        .status(400)
-        .json({ message: "Application date cannot be in the future" });
+    if (appDate > today) {
+      return res.status(400).json({ message: "Application date cannot be in the future" });
     }
 
-    const newAppl = await Application.create({
+    const newApplication = await Application.create({
       user: userId,
       company,
       position,
@@ -48,26 +32,21 @@ const addApplication = async (req, res) => {
       notes,
     });
 
-    res.status(201).json(newAppl);
+    res.status(201).json(newApplication);
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
-// List all applications
 const getApplications = async (req, res) => {
   try {
-    const { userId } = req.params;
+    const userId = req.user.id; 
     const { status } = req.query;
 
     let query = { user: userId };
-    if (status) {
-      query.status = status;
-    }
+    if (status) query.status = status;
 
-    const applications = await Application.find(query).sort({
-      createdAt: -1,
-    });
+    const applications = await Application.find(query).sort({ createdAt: -1 });
     res.status(200).json(applications);
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
@@ -75,11 +54,11 @@ const getApplications = async (req, res) => {
 };
 
 // Fetch single application by ID
-const getApplicationsById = async (req, res) => {
+const getApplicationById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    if (!require("mongoose").Types.ObjectId.isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ message: "Invalid application ID" });
     }
 
@@ -90,32 +69,40 @@ const getApplicationsById = async (req, res) => {
 
     res.status(200).json(application);
   } catch (error) {
-    res.status(500).json({ message: "server error", error: error.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
-// update the application
+// Update an application
 const updateApplication = async (req, res) => {
   try {
     const { id } = req.params;
-    const updatedApp = await Application.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
-    if (!updatedApp)
-      return res.status(404).json({ message: "Application not found" });
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid application ID" });
+    }
+
+    const updatedApp = await Application.findByIdAndUpdate(id, req.body, { new: true });
+    if (!updatedApp) return res.status(404).json({ message: "Application not found" });
+
     res.status(200).json(updatedApp);
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
-// Delete the application
+// Delete an application
 const deleteApplication = async (req, res) => {
   try {
     const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid application ID" });
+    }
+
     const deletedApp = await Application.findByIdAndDelete(id);
-    if (!deletedApp)
-      return res.status(404).json({ message: "Application not found" });
+    if (!deletedApp) return res.status(404).json({ message: "Application not found" });
+
     res.status(200).json({ message: "Application deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
@@ -125,7 +112,7 @@ const deleteApplication = async (req, res) => {
 module.exports = {
   addApplication,
   getApplications,
+  getApplicationById,
   updateApplication,
   deleteApplication,
-  getApplicationsById,
 };

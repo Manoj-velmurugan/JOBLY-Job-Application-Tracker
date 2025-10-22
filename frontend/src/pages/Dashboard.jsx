@@ -10,6 +10,8 @@ const DashboardPage = () => {
 
       {/* Main Content */}
       <DashboardContent />
+
+      
     </div>
   );
 };
