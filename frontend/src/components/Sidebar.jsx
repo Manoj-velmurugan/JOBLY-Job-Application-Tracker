@@ -21,9 +21,6 @@ const Sidebar = () => {
                     <button onClick={() => navigate("/dashboard")} className="w-full text-left py-2 px-4 bg-blue-100 text-blue700 font-bold rounded-r-full">
                         Dashboard
                     </button>
-                    <button onClick={() => navigate("/myjobs")} className="w-full text-left py-2 px-4 text-gray-600 hover:bg-gray-100 rounded-r-full">
-                        My Jobs
-                    </button>
                 </nav>
             </div>
 

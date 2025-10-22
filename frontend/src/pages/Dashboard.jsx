@@ -4,14 +4,14 @@ import DashboardContent from "../components/DashboardContent";
 
 const DashboardPage = () => {
   return (
-    <div className="flex min-h-screen bg-blue-50">
+    <div className="flex h-screen bg-blue-50 overflow-hidden">
       {/* Sidebar */}
       <Sidebar />
 
       {/* Main Content */}
       <DashboardContent />
 
-      
+
     </div>
   );
 };

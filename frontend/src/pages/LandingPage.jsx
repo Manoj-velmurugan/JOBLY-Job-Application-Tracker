@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/jobly_logo.png";
+import landing from "../assets/landing_img.png";
 import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
@@ -25,14 +26,14 @@ const LandingPage = () => {
             </nav>
 
             {/* Hero Section */}
-            <main className="flex flex-col items-center text-center px-6 py-16 flex-grow">
+            <main className="flex flex-col items-center text-center px-6 py-16 flex-grow bg-gradient-to-b from-blue-50 to-white">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-snug">
                     <div className="mb-2">Track Your Job Applications.</div>
                     <div className="mb-2">Stay Organized.</div>
                     <div className="mb-2">Get Hired</div>
                 </h2>
 
-                <img src="" alt="" className="mt-10 w-full max-w-3xl rounded-xl shadow-lg"/>
+                <img src={landing} alt="dashboard image" className="mt-10 w-full max-w-3xl rounded-xl shadow-lg"/>
             </main>
         </div>
     );

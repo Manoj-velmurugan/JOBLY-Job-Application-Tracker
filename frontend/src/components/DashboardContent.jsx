@@ -4,7 +4,7 @@ import API from "../api/axios";
 import { FaFilter, FaEllipsisV } from "react-icons/fa";
 import AddJobPopup from "./AddJobPopup";
 import { jwtDecode } from "jwt-decode";
-import ApplicationDetails from "./ApplicationDetails"; 
+import ApplicationDetails from "./ApplicationDetails";
 
 const DashboardContent = () => {
   const [jobs, setJobs] = useState([]);
@@ -13,7 +13,20 @@ const DashboardContent = () => {
   const [showAddJobPopup, setShowAddJobPopup] = useState(false);
   const [editJobData, setEditJobData] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [selectedApplication, setSelectedApplication] = useState(null); 
+  const [selectedApplication, setSelectedApplication] = useState(null);
+  const [userName, setUserName] = useState(""); 
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        setUserName(decoded.name);
+      } catch (error) {
+        console.error("Failed to decode token:", error);
+      }
+    }
+  }, []); 
 
   const toggleDropdown = (index) => {
     setActiveDropdown(activeDropdown === index ? null : index);
@@ -79,7 +92,7 @@ const DashboardContent = () => {
   };
 
   const handleView = (job) => {
-    setSelectedApplication(job); 
+    setSelectedApplication(job);
     setActiveDropdown(null);
   };
 
@@ -103,7 +116,7 @@ const DashboardContent = () => {
   };
 
   const handleBack = () => {
-    setSelectedApplication(null); 
+    setSelectedApplication(null);
   };
 
   if (selectedApplication) {
@@ -119,10 +132,10 @@ const DashboardContent = () => {
   const statuses = ["Applied", "Interview", "Offer", "Rejected"];
 
   return (
-    <div className="flex-1 px-8 py-8 flex flex-col space-y-8">
+    <div className="flex-1 px-8 py-8 flex flex-col space-y-8 overflow-y-auto">
       <div className="bg-indigo-600 rounded-xl p-8 flex justify-between items-center text-white shadow-lg">
         <div>
-          <h2 className="text-3xl font-bold mb-2">Good Morning!</h2>
+          <h2 className="text-3xl font-bold mb-2">{`Good Morning, ${userName}!`}</h2>
           <p className="text-indigo-100 mb-4">
             Let's organize your job hunt and land that dream role!
           </p>
@@ -145,7 +158,7 @@ const DashboardContent = () => {
         <img
           src={robot}
           alt="Dashboard Robot"
-          className="h-32 w-auto hidden md:block"
+          className="h-32"
         />
       </div>
 
@@ -197,7 +210,7 @@ const DashboardContent = () => {
           <div className="w-12"></div>
         </div>
 
-        <div className="max-h-60 overflow-y-auto flex-1 pr-2">
+        <div className="flex-1 pr-2">
           {jobs.length > 0 ? (
             jobs.map((job, index) => (
               <div
@@ -220,10 +233,14 @@ const DashboardContent = () => {
                   </button>
 
                   {activeDropdown === index && (
-                    <div className="absolute right-0 mt-1 w-40 bg-white border rounded-md shadow-lg z-20">
+                    <div
+                      className={`absolute right-0 w-40 bg-white border rounded-md shadow-lg z-20 ${
+                        jobs.length - index <= 3 ? "bottom-full mb-1" : "top-full mt-1"
+                      }`}
+                    >
                       <div
                         className="px-4 py-2 hover:bg-blue-100 cursor-pointer text-gray-700 text-sm"
-                        onClick={() => handleView(job)} 
+                        onClick={() => handleView(job)}
                       >
                         View Full Details
                       </div>
