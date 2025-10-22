@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react";
+import Sidebar from "../components/Sidebar";
+import DashboardContent from "../components/DashboardContent";
 
-const Dashboard = () => {
+const DashboardPage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <h1 className='text-4xl font-bold text-gray-900'>Dashboard</h1>
+    <div className="flex min-h-screen bg-blue-50">
+      {/* Sidebar */}
+      <Sidebar />
+
+      {/* Main Content */}
+      <DashboardContent />
     </div>
   );
 };
 
-export default Dashboard;
+export default DashboardPage;
