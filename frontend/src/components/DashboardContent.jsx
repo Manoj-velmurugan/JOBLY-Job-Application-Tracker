@@ -4,7 +4,7 @@ import API from "../api/axios";
 import { FaFilter, FaEllipsisV } from "react-icons/fa";
 import AddJobPopup from "./AddJobPopup";
 import { jwtDecode } from "jwt-decode";
-import ApplicationDetails from "./ApplicationDetails"; // Import the new component
+import ApplicationDetails from "./ApplicationDetails"; 
 
 const DashboardContent = () => {
   const [jobs, setJobs] = useState([]);
@@ -13,7 +13,7 @@ const DashboardContent = () => {
   const [showAddJobPopup, setShowAddJobPopup] = useState(false);
   const [editJobData, setEditJobData] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [selectedApplication, setSelectedApplication] = useState(null); // State for the detail view
+  const [selectedApplication, setSelectedApplication] = useState(null); 
 
   const toggleDropdown = (index) => {
     setActiveDropdown(activeDropdown === index ? null : index);
@@ -79,7 +79,7 @@ const DashboardContent = () => {
   };
 
   const handleView = (job) => {
-    setSelectedApplication(job); // Set the selected job to show details
+    setSelectedApplication(job); 
     setActiveDropdown(null);
   };
 
@@ -103,10 +103,9 @@ const DashboardContent = () => {
   };
 
   const handleBack = () => {
-    setSelectedApplication(null); // Go back to the list view
+    setSelectedApplication(null); 
   };
 
-  // If an application is selected, show the details component
   if (selectedApplication) {
     return (
       <div className="flex-1 px-8 py-8">
@@ -119,7 +118,6 @@ const DashboardContent = () => {
 
   const statuses = ["Applied", "Interview", "Offer", "Rejected"];
 
-  // Otherwise, show the main dashboard
   return (
     <div className="flex-1 px-8 py-8 flex flex-col space-y-8">
       <div className="bg-indigo-600 rounded-xl p-8 flex justify-between items-center text-white shadow-lg">
@@ -225,7 +223,7 @@ const DashboardContent = () => {
                     <div className="absolute right-0 mt-1 w-40 bg-white border rounded-md shadow-lg z-20">
                       <div
                         className="px-4 py-2 hover:bg-blue-100 cursor-pointer text-gray-700 text-sm"
-                        onClick={() => handleView(job)} // Updated onClick
+                        onClick={() => handleView(job)} 
                       >
                         View Full Details
                       </div>

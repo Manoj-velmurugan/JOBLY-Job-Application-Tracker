@@ -4,7 +4,7 @@ import API from "../api/axios";
 import { ArrowLeft } from "lucide-react";
 
 const ViewJobDetails = () => {
-  const { id } = useParams(); // application ID from URL
+  const { id } = useParams(); 
   const navigate = useNavigate();
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
