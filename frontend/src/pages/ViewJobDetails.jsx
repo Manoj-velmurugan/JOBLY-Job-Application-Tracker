@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import API from "../api/axios";
+import api from "../api/api";
 import { ArrowLeft } from "lucide-react";
 
 const ViewJobDetails = () => {
@@ -13,7 +13,7 @@ const ViewJobDetails = () => {
     const fetchJobDetails = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await API.get(`/applications/single/${id}`, {
+        const res = await api.get(`/applications/single/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setJob(res.data);

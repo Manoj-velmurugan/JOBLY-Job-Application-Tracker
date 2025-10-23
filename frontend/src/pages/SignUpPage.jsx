@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/jobly_logo.png";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api/api";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const SignUpPage = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post("auth/register", {
+      const res = await api.post("auth/register", {
         name: formData.name,
         email: formData.email,
         password: formData.password,

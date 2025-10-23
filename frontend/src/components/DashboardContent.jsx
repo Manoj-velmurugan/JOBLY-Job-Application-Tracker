@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import robot from "../assets/robot.png";
-import API from "../api/axios";
+import API from "../api/api";
 import { FaFilter, FaEllipsisV } from "react-icons/fa";
 import AddJobPopup from "./AddJobPopup";
 import { jwtDecode } from "jwt-decode";
