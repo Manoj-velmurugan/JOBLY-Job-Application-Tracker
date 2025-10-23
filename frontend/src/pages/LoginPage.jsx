@@ -41,7 +41,7 @@ const LoginPage = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post("auth/login", {
+      const res = await axios.post("/api/auth/login", {
         email: formData.email,
         password: formData.password,
       });
