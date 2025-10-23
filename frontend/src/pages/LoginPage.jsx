@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/jobly_logo.png";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const LoginPage = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post("/api/auth/login", {
+      const res = await api.post("auth/login", {
         email: formData.email,
         password: formData.password,
       });
