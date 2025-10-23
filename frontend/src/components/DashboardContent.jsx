@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import robot from "../assets/robot.png";
-import API from "../api/api";
+import api from "../api";
 import { FaFilter, FaEllipsisV } from "react-icons/fa";
 import AddJobPopup from "./AddJobPopup";
 import { jwtDecode } from "jwt-decode";
@@ -35,7 +35,7 @@ const DashboardContent = () => {
   const fetchJobs = async (status = "") => {
     try {
       const token = localStorage.getItem("token");
-      const res = await API.get(
+      const res = await api.get(
         `/applications${status ? `?status=${status}` : ""}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -58,7 +58,7 @@ const DashboardContent = () => {
       const userId = decoded.id;
 
       if (editJobData) {
-        const res = await API.put(
+        const res = await api.put(
           `/applications/${editJobData._id}`,
           { ...jobData, userId },
           { headers: { Authorization: `Bearer ${token}` } }
@@ -67,7 +67,7 @@ const DashboardContent = () => {
           prev.map((job) => (job._id === editJobData._id ? res.data : job))
         );
       } else {
-        const res = await API.post(
+        const res = await api.post(
           "/applications",
           { ...jobData, userId },
           { headers: { Authorization: `Bearer ${token}` } }
@@ -100,7 +100,7 @@ const DashboardContent = () => {
     if (window.confirm(`Are you sure you want to delete the application for ${jobToDelete.company}?`)) {
       try {
         const token = localStorage.getItem("token");
-        await API.delete(`/applications/${jobToDelete._id}`, {
+        await api.delete(`/applications/${jobToDelete._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setJobs((prevJobs) =>
