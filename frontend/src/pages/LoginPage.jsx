@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/jobly_logo.png";
 import { useNavigate } from "react-router-dom";
-import api from "../api";
+import api from "../api/axios";
 
 const LoginPage = () => {
   const navigate = useNavigate();
