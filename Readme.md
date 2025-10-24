@@ -10,7 +10,7 @@ Jobly is a MERN stack application to manage and track your job applications effi
 - [Setup & Installation](#setup--installation)
 - [Environment Variables](#environment-variables)
 - [API Endpoints](#api-endpoints)
-- [Screenshots / Demo](#screenshots--demo)
+- [Screenshots / Demo](#screenshots)
 - [Notes](#notes)
 - [License](#license)
 
