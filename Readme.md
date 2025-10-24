@@ -133,7 +133,7 @@ View applications filtered by status of the applications.
 ### 7. Mobile Responsiveness
 Jobly adapts seamlessly to smaller screens for on-the-go tracking.
 
-<img width="269" height="584" alt="image" src="https://github.com/user-attachments/assets/350a6c63-9d29-4fc7-842c-5c066ecb149b" />
+<img width="283" height="595" alt="image" src="https://github.com/user-attachments/assets/fd9be603-33c2-4ea3-b00f-60bf18651ec4" />
 <img width="274" height="588" alt="image" src="https://github.com/user-attachments/assets/bedd4d0e-803f-4e95-bc2f-698dbf2566d3" />
 
 ### Notes
