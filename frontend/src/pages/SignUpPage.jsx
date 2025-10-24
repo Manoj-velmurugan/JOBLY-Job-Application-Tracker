@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/jobly_logo.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../api";
 
 const SignUpPage = () => {
