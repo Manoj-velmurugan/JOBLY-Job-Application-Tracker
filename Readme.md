@@ -1,27 +1,102 @@
-# Jobly – Job Application Tracker
+# Jobly - Job Application Tracker
 
-**Jobly** is a full-stack MERN application that helps users efficiently track their job applications, manage application statuses, and keep all their job hunt data organized. The application is designed for both desktop and mobile views with a responsive interface.
+Jobly is a MERN stack application to manage and track your job applications efficiently. It allows users to register, login, add job applications, and view details of their applications. The app also includes authentication and role-based protected routes.
 
 ---
 
 ## Table of Contents
-- [Live Demo](#live-demo)
-- [Quick Demo / Screenshots](#quick-demo--screenshots)
 - [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Author](#author)
+- [Tech Stack](#tech-stack)
+- [Setup & Installation](#setup--installation)
+- [Environment Variables](#environment-variables)
+- [API Endpoints](#api-endpoints)
+- [Screenshots / Demo](#screenshots--demo)
+- [Notes](#notes)
+- [License](#license)
 
 ---
 
-## Live Demo
--   **Frontend:** [**Jobly Live**](https://jobly-job-application-tracker.vercel.app)
--   **Backend:** [**Render API**](https://jobly-job-application-tracker.onrender.com/)
-
-> **Note:** The first login may take a few seconds to load. This is due to the backend server being hosted on a free-tier platform, which may go into a "sleep" state when inactive. Subsequent logins are faster.
+## Features
+- User registration and login
+- Add, view, and track job applications
+- Protected routes for authenticated users
+- Responsive frontend design with React + Tailwind CSS
+- Backend with Express.js and MongoDB
+- JWT authentication
 
 ---
 
-## Quick Demo / Screenshots
+## Tech Stack
+- **Frontend:** React, React Router, Tailwind CSS, Axios  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB Atlas  
+- **Authentication:** JWT + bcrypt  
+- **Deployment:** Vercel (frontend), Render / Railway / your choice (backend)
+
+---
+
+## Setup & Installation
+
+### Clone the repository
+```bash
+git clone https://github.com/Manoj-velmurugan/JOBLY-Job-Application-Tracker.git
+cd JOBLY-Job-Application-Tracker
+```
+
+### Backend Setup
+```
+cd backend
+npm install
+```
+- Create a .env file in the backend folder with the following variables:
+```
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
+- Run the backend :
+```
+node server.js
+```
+
+### Frontend Setup
+```
+cd ../frontend
+npm install
+```
+- Create a .env file in the frontend folder with:
+```
+VITE_API_BASE_URL=http://localhost:5000/api
+```
+- Run the frontend :
+```
+npm run dev
+```
+- The app should now be running locally at http://localhost:5173.
+
+## API Endpoints
+
+### Auth
+| Method | Endpoint         | Description             |
+|--------|-----------------|-------------------------|
+| POST   | `/auth/register` | Register a new user     |
+| POST   | `/auth/login`    | Login an existing user  |
+
+### Jobs
+| Method | Endpoint         | Description                         |
+|--------|-----------------|-------------------------------------|
+| GET    | `/jobs`          | Get all jobs for the logged-in user |
+| POST   | `/jobs`          | Add a new job application           |
+| GET    | `/jobs/:id`      | Get details of a specific job       |
+| PATCH  | `/jobs/:id`      | Update a specific job               |
+| DELETE | `/jobs/:id`      | Delete a specific job               |
+
+- Note: All /jobs routes are protected and require a valid JWT token in the Authorization header:
+```
+Authorization: Bearer <token>
+```
+
+## Screenshots
 
 Here's a quick visual tour of Jobly's key features:
 
@@ -55,38 +130,11 @@ View comprehensive details of a specific job application.
 View applications filtered by status of the applications.
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/3940ace6-bcca-4275-90e3-2f4aeb286a6f" />
 
+Notes
 
+Initial Login Slow: The first login after deployment may be slow due to server cold start (Render free tier). Subsequent logins are faster.
 
-### 7. Mobile Responsiveness
-Jobly adapts seamlessly to smaller screens for on-the-go tracking.
-
-<img width="269" height="584" alt="image" src="https://github.com/user-attachments/assets/350a6c63-9d29-4fc7-842c-5c066ecb149b" />
-<img width="274" height="588" alt="image" src="https://github.com/user-attachments/assets/bedd4d0e-803f-4e95-bc2f-698dbf2566d3" />
-
-
-
----
-
-## Features
--   **User Authentication:** Secure login/signup with JWT and password hashing.
--   **CRUD Operations:** Add, edit, and delete job applications.
--   **Status Tracking:** Track application status: Applied, Interview, Offer, Rejected.
--   **Filtering:** Filter applications by their current status.
--   **Responsive Design:** Fully functional on both mobile and desktop devices.
--   **Personalization:** Dashboard greeting personalized with the user's name.
--   **Application Details:** View detailed information for each application.
--   **Logout Functionality:** Securely end user sessions.
-
----
-
-## Technologies Used
--   **Frontend:** React, Tailwind CSS, Axios, React Icons, React Router
--   **Backend:** Node.js, Express.js, MongoDB, Mongoose
--   **Authentication:** JWT, bcrypt
--   **Deployment:** Frontend on Vercel, Backend on Render (Free Tier)
--   **Other Libraries:** `jwt-decode` for extracting user info from the token
-
----
+Ensure .env files are correctly configured before running locally.
 
 ## Author
 **Manoj M V**
@@ -94,3 +142,4 @@ Jobly adapts seamlessly to smaller screens for on-the-go tracking.
 -   **LinkedIn:** [https://www.linkedin.com/in/manoj-mv/]
 
 Thank you for checking out Jobly!
+  
