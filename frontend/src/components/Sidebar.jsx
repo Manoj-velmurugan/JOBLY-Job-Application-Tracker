@@ -11,7 +11,7 @@ const Sidebar = () => {
     };
 
     return (
-        <div className="w-64 bg-white shadow-md flex flex-col justify-between p-6">
+        <div className="w-64 bg-white shadow-md flex flex-col justify-between p-6 md:min-h-screen">
             <div>
                 <div className="flex flex-col items-start mb-12">
                     <img src={logo} alt="Jobly Logo" className="h-12 w-auto mb-2" />

@@ -14,7 +14,7 @@ const DashboardContent = () => {
   const [editJobData, setEditJobData] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [selectedApplication, setSelectedApplication] = useState(null);
-  const [userName, setUserName] = useState(""); 
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -26,7 +26,7 @@ const DashboardContent = () => {
         console.error("Failed to decode token:", error);
       }
     }
-  }, []); 
+  }, []);
 
   const toggleDropdown = (index) => {
     setActiveDropdown(activeDropdown === index ? null : index);
@@ -97,7 +97,11 @@ const DashboardContent = () => {
   };
 
   const handleDelete = async (jobToDelete) => {
-    if (window.confirm(`Are you sure you want to delete the application for ${jobToDelete.company}?`)) {
+    if (
+      window.confirm(
+        `Are you sure you want to delete the application for ${jobToDelete.company}?`
+      )
+    ) {
       try {
         const token = localStorage.getItem("token");
         await api.delete(`/applications/${jobToDelete._id}`, {
@@ -121,9 +125,12 @@ const DashboardContent = () => {
 
   if (selectedApplication) {
     return (
-      <div className="flex-1 px-8 py-8">
+      <div className="flex-1 px-4 sm:px-8 py-6">
         <div className="bg-white rounded-xl shadow-md">
-          <ApplicationDetails application={selectedApplication} onBack={handleBack} />
+          <ApplicationDetails
+            application={selectedApplication}
+            onBack={handleBack}
+          />
         </div>
       </div>
     );
@@ -132,15 +139,18 @@ const DashboardContent = () => {
   const statuses = ["Applied", "Interview", "Offer", "Rejected"];
 
   return (
-    <div className="flex-1 px-8 py-8 flex flex-col space-y-8 overflow-y-auto">
-      <div className="bg-indigo-600 rounded-xl p-8 flex justify-between items-center text-white shadow-lg">
-        <div>
-          <h2 className="text-3xl font-bold mb-2">{`Good Morning, ${userName}!`}</h2>
-          <p className="text-indigo-100 mb-4">
+    <div className="flex-1 px-4 sm:px-8 py-6 flex flex-col space-y-6 overflow-y-auto">
+      {/* Header Section */}
+      <div className="bg-indigo-600 rounded-xl p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-center text-white shadow-lg space-y-4 sm:space-y-0">
+        <div className="text-center sm:text-left">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-2">
+            {`Good Morning, ${userName}!`}
+          </h2>
+          <p className="text-indigo-100 mb-4 text-sm sm:text-base">
             Let's organize your job hunt and land that dream role!
           </p>
           <button
-            className="bg-white text-blue-600 font-semibold px-4 py-2 rounded-md hover:bg-blue-50 transition"
+            className="bg-white text-blue-600 font-semibold px-4 py-2 rounded-md hover:bg-blue-50 transition text-sm sm:text-base"
             onClick={() => {
               setEditJobData(null);
               setShowAddJobPopup(true);
@@ -155,16 +165,13 @@ const DashboardContent = () => {
             jobData={editJobData}
           />
         </div>
-        <img
-          src={robot}
-          alt="Dashboard Robot"
-          className="h-32"
-        />
+        <img src={robot} alt="Dashboard Robot" className="h-24 sm:h-32" />
       </div>
 
-      <div className="bg-white rounded-xl shadow-md p-6 relative flex flex-col">
+      {/* Applications Table */}
+      <div className="bg-white rounded-xl shadow-md p-4 sm:p-6 relative flex flex-col overflow-x-auto">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-bold text-gray-800">
+          <h3 className="text-lg sm:text-xl font-bold text-gray-800">
             Application Status
           </h3>
           <div className="relative">
@@ -202,29 +209,49 @@ const DashboardContent = () => {
           </div>
         </div>
 
-        <div className="flex justify-between text-gray-500 text-sm border-b pb-2 mb-2 pr-2">
-          <div className="w-1/4 font-semibold">Company Name</div>
+        {/* Table Header */}
+        <div className="hidden sm:flex justify-between text-gray-500 text-sm border-b pb-2 mb-2 pr-2">
+          <div className="w-1/4 font-semibold">Company</div>
           <div className="w-1/4 font-semibold">Designation</div>
           <div className="w-1/4 font-semibold">Date Applied</div>
           <div className="w-1/4 font-semibold">Status</div>
           <div className="w-12"></div>
         </div>
 
+        {/* Table Body */}
         <div className="flex-1 pr-2">
           {jobs.length > 0 ? (
             jobs.map((job, index) => (
               <div
                 key={job._id}
-                className="flex justify-between items-center py-3 border-b border-gray-100 last:border-none relative"
+                className="flex flex-col sm:flex-row justify-between sm:items-center py-3 border-b border-gray-100 last:border-none relative text-sm sm:text-base"
               >
-                <div className="w-1/4 text-gray-700">{job.company}</div>
-                <div className="w-1/4 text-gray-700">{job.position}</div>
-                <div className="w-1/4 text-gray-700">
+                <div className="sm:w-1/4 text-gray-700 font-medium sm:font-normal">
+                  <span className="sm:hidden font-semibold text-gray-500">
+                    Company:
+                  </span>{" "}
+                  {job.company}
+                </div>
+                <div className="sm:w-1/4 text-gray-700">
+                  <span className="sm:hidden font-semibold text-gray-500">
+                    Role:
+                  </span>{" "}
+                  {job.position}
+                </div>
+                <div className="sm:w-1/4 text-gray-700">
+                  <span className="sm:hidden font-semibold text-gray-500">
+                    Applied:
+                  </span>{" "}
                   {new Date(job.dateApplied).toLocaleDateString()}
                 </div>
-                <div className="w-1/4 text-gray-700">{job.status}</div>
+                <div className="sm:w-1/4 text-gray-700">
+                  <span className="sm:hidden font-semibold text-gray-500">
+                    Status:
+                  </span>{" "}
+                  {job.status}
+                </div>
 
-                <div className="w-12 text-right relative">
+                <div className="sm:w-12 text-right mt-2 sm:mt-0 relative">
                   <button
                     onClick={() => toggleDropdown(index)}
                     className="text-gray-500 cursor-pointer"
@@ -235,7 +262,9 @@ const DashboardContent = () => {
                   {activeDropdown === index && (
                     <div
                       className={`absolute right-0 w-40 bg-white border rounded-md shadow-lg z-20 ${
-                        jobs.length - index <= 3 ? "bottom-full mb-1" : "top-full mt-1"
+                        jobs.length - index <= 3
+                          ? "bottom-full mb-1"
+                          : "top-full mt-1"
                       }`}
                     >
                       <div
@@ -262,7 +291,7 @@ const DashboardContent = () => {
               </div>
             ))
           ) : (
-            <p className="text-gray-500 text-center py-4">
+            <p className="text-gray-500 text-center py-4 text-sm sm:text-base">
               No job applications found.
             </p>
           )}
