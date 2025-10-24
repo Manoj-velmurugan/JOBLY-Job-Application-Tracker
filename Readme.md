@@ -130,11 +130,15 @@ View comprehensive details of a specific job application.
 View applications filtered by status of the applications.
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/3940ace6-bcca-4275-90e3-2f4aeb286a6f" />
 
-Notes
+### 7. Mobile Responsiveness
+Jobly adapts seamlessly to smaller screens for on-the-go tracking.
 
-Initial Login Slow: The first login after deployment may be slow due to server cold start (Render free tier). Subsequent logins are faster.
+<img width="269" height="584" alt="image" src="https://github.com/user-attachments/assets/350a6c63-9d29-4fc7-842c-5c066ecb149b" />
+<img width="274" height="588" alt="image" src="https://github.com/user-attachments/assets/bedd4d0e-803f-4e95-bc2f-698dbf2566d3" />
 
-Ensure .env files are correctly configured before running locally.
+### Notes
+- Initial Login Slow: The first login after deployment may be slow due to server cold start (Render free tier). Subsequent logins are faster.
+- Ensure .env files are correctly configured before running locally.
 
 ## Author
 **Manoj M V**
