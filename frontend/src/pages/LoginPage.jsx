@@ -75,7 +75,6 @@ const LoginPage = () => {
 
         {/* Login Form */}
         <form className="space-y-6" onSubmit={handleLogin}>
-
           <div>
             <label
               htmlFor="email"
@@ -129,9 +128,12 @@ const LoginPage = () => {
 
         <p className="mt-4 text-center text-gray-600">
           Don’t have an account?{" "}
-          <a href="/signup" className="text-blue-500 hover:underline font-medium">
+          <Link
+            to="/signup"
+            className="text-blue-500 hover:underline font-medium"
+          >
             Sign Up
-          </a>
+          </Link>
         </p>
       </div>
     </div>
