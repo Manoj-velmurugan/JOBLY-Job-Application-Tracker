@@ -10,7 +10,6 @@ import ProtectedRoute from "./components/ProtectedRoutes";
 
 const AppRouter = () => {
   return (
-    <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -37,7 +36,6 @@ const AppRouter = () => {
         <Route path="/404" element={<NotFoundPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </Router>
   );
 };
 
