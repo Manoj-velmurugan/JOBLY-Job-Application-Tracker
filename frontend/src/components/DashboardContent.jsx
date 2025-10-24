@@ -144,7 +144,7 @@ const DashboardContent = () => {
       <div className="bg-indigo-600 rounded-xl p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-center text-white shadow-lg space-y-4 sm:space-y-0">
         <div className="text-center sm:text-left">
           <h2 className="text-2xl sm:text-3xl font-bold mb-2">
-            {`Good Morning, ${userName}!`}
+            {`Welcome, ${userName}!`}
           </h2>
           <p className="text-indigo-100 mb-4 text-sm sm:text-base">
             Let's organize your job hunt and land that dream role!
