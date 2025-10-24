@@ -85,11 +85,11 @@ npm run dev
 ### Jobs
 | Method | Endpoint         | Description                         |
 |--------|-----------------|-------------------------------------|
-| GET    | `/jobs`          | Get all jobs for the logged-in user |
-| POST   | `/jobs`          | Add a new job application           |
-| GET    | `/jobs/:id`      | Get details of a specific job       |
-| PATCH  | `/jobs/:id`      | Update a specific job               |
-| DELETE | `/jobs/:id`      | Delete a specific job               |
+| GET    | `/applications/:user_id`          | Get all jobs for the logged-in user |
+| POST   | `/applications`          | Add a new job application           |
+| GET    | `/applications/single/:id`      | Get details of a specific job       |
+| PUT  | `/applications/:id`      | Update a specific job               |
+| DELETE | `/applications/:id`      | Delete a specific job               |
 
 - Note: All /jobs routes are protected and require a valid JWT token in the Authorization header:
 ```
