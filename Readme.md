@@ -5,16 +5,46 @@
 ---
 
 ## Table of Contents
+- [Live Demo](#live-demo)
+- [Quick Demo / Screenshots](#quick-demo--screenshots)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Live Demo](#live-demo)
-- [Setup Instructions](#setup-instructions)
-  - [Prerequisites](#prerequisites)
-  - [Backend Setup](#backend-setup)
-  - [Frontend Setup](#frontend-setup)
-- [Folder Structure](#folder-structure)
-- [Known Issues / Notes](#known-issues--notes)
 - [Author](#author)
+
+---
+
+## Live Demo
+-   **Frontend:** [**Jobly Live**](https://jobly-job-application-tracker.vercel.app)
+-   **Backend:** [**Render API**](https://jobly-job-application-tracker.onrender.com/)
+
+> **Note:** The first login may take a few seconds to load. This is due to the backend server being hosted on a free-tier platform, which may go into a "sleep" state when inactive. Subsequent logins are faster.
+
+---
+
+## Quick Demo / Screenshots
+
+Here's a quick visual tour of Jobly's key features:
+
+### 1. Login/Signup Page
+Secure authentication for new and returning users.
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/6dcde61a-aa81-49f3-a787-e19d6217f62a" />
+ 
+
+### 2. Dashboard - Desktop View
+A personalized overview of your job applications with quick access to add new ones.
+![Dashboard Desktop](https://github.com/Manoj-velmurugan/JOBLY-Job-Application-Tracker/blob/main/dashboard.png?raw=true)
+
+### 3. Add New Application
+Easily add new job application details through a simple form.
+![Add Job Popup](https://github.com/Manoj-velmurugan/JOBLY-Job-Application-Tracker/blob/main/addjob.png?raw=true)
+
+### 4. Application Details
+View comprehensive details of a specific job application.
+![Application Details](https://github.com/Manoj-velmurugan/JOBLY-Job-Application-Tracker/blob/main/applicationdetails.png?raw=true)
+
+### 5. Mobile Responsiveness
+Jobly adapts seamlessly to smaller screens for on-the-go tracking.
+![Mobile View](https://github.com/Manoj-velmurugan/JOBLY-Job-Application-Tracker/blob/main/mobileview.png?raw=true)
 
 ---
 
@@ -39,73 +69,8 @@
 
 ---
 
-## Live Demo
--   **Frontend:** [**Jobly Live**](https://jobly-job-application-tracker.vercel.app)
--   **Backend:** [**Render API**](https://jobly-job-application-tracker.onrender.com/api)
-
-> **Note:** The first login may take a few seconds to load. This is due to the backend server being hosted on a free-tier platform, which may go into a "sleep" state when inactive. Subsequent logins are faster.
-
----
-
-## Setup Instructions
-
-### Prerequisites
--   Node.js (v14 or higher)
--   npm
--   MongoDB Atlas account (or a local MongoDB instance)
-
-### Backend Setup
-1.  **Navigate to the backend folder:**
-    ```bash
-    cd backend
-    ```
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-3.  **Create a `.env` file** in the `backend` folder and add the following variables:
-    ```env
-    PORT=5000
-    MONGO_URI=your_mongodb_connection_string
-    JWT_SECRET=your_super_secret_jwt_key
-    ```
-4.  **Start the server:**
-    ```bash
-    npm run dev
-    ```
-
-### Frontend Setup
-1.  **Navigate to the frontend folder** from the root directory:
-    ```bash
-    cd frontend
-    ```
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-3.  **Create a `.env` file** in the `frontend` folder and add the following:
-    ```env
-    VITE_API_BASE_URL=http://localhost:5000/api
-    ```
-    *Note: Change this to your deployed backend URL for production.*
-4.  **Start the frontend development server:**
-    ```bash
-    npm run dev
-    ```
-5.  Open your browser at `http://localhost:5173` (or the port shown in the terminal).
-
----
----
-
-## Known Issues / Notes
--   **Initial Login Delay:** On the first login, the live server may take a few seconds to respond due to the free-tier hosting. Subsequent logins are faster.
--   **Free-Tier Limitations:** The hosted backend may "sleep" after a period of inactivity. Reviewers may experience a slight delay on their first access.
-
----
-
 ## Author
 **Manoj M V**
-
 -   **GitHub:** [Manoj-velmurugan](https://github.com/Manoj-velmurugan)
 -   **LinkedIn:** [Your LinkedIn Profile URL]
 
