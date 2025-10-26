@@ -35,6 +35,8 @@ Jobly is a MERN stack application to manage and track your job applications effi
 
 ---
 
+## Demo Link : https://jobly-job-application-tracker.vercel.app/
+
 ## Setup & Installation
 
 ### Clone the repository
