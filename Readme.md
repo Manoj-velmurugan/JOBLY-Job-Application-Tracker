@@ -50,8 +50,6 @@ npm install
 ```
 ### Environment Variables
 - Create a .env file in the backend folder with the following variables:
-- MongoDB Connection String = mongodb+srv://manojvelmurugan04_db_user:dkwQMRdshIFZh0ip@joblycluster.xcqcali.mongodb.net/?retryWrites=true&w=majority&appName=joblycluster
-- Secret Key = 1@3$5^7*902468
 ```
 PORT=5000
 MONGO_URI=your_mongodb_connection_string 
