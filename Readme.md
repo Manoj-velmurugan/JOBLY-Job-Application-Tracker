@@ -140,7 +140,7 @@ Jobly adapts seamlessly to smaller screens for on-the-go tracking.
 <img width="274" height="588" alt="image" src="https://github.com/user-attachments/assets/bedd4d0e-803f-4e95-bc2f-698dbf2566d3" />
 
 ### Notes
-- Initial Login Slow: The first login after deployment may be slow due to server cold start (Render free tier). Subsequent logins are faster.
+- Initial Login and signup Slow: The first login or first signup in the demo will be slow due to server cold start (Render free tier). Subsequent logins and signups are faster.
 - Ensure .env files are correctly configured before running locally.
 
 ## Author
